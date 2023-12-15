@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftower-p <ftower-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 17:33:47 by ftower-p          #+#    #+#             */
+/*   Created: 2023/12/14 17:47:19 by ftower-p          #+#    #+#             */
 /*   Updated: 2023/09/06 17:04:41 by ftower-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list	*ft_lstnew(void *content)
 {
-	long long	nbr;
+	t_list	*new;
 
-	nbr = n;
-	if (nbr < 0)
-	{
-		nbr *= -1;
-		ft_putchar_fd('-', fd);
-	}
-	if (nbr > 9)
-	{
-		ft_putnbr_fd((nbr / 10), fd);
-		ft_putchar_fd((nbr % 10 + '0'), fd);
-	}
-	else
-	{
-		ft_putchar_fd(nbr + '0', fd);
-	}
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
